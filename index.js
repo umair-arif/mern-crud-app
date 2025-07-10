@@ -1,4 +1,5 @@
 require("dotenv").config();
+console.log("✅ MONGO_URL loaded:", process.env.MONGO_URL);
 const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
