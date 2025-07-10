@@ -1,20 +1,18 @@
 require("dotenv").config();
-console.log("✅ MONGO_URL loaded:", process.env.MONGO_URL);
-const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const UserModel = require("./models/user");
+const { connectToMongoDb } = require("./connect");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-mongoose
-  .connect(process.env.MONGO_URL)
-  .then(() => console.log("✅ MongoDB connected.."))
-  .catch((err) => console.log("DB Error:", err));
+connectToMongoDb(process.env.MONGO_URL).then(() =>
+  console.log("✅ MongoDB connected..")
+);
 const PORT = process.env.PORT || 8000;
 app.listen(PORT);
 app.post("/user", (req, res) => {
