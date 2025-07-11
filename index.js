@@ -10,9 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-connectToMongoDb(process.env.MONGO_URL).then(() =>
-  console.log("✅ MongoDB connected..")
-);
+connectToMongoDb(process.env.MONGO_URL);
 const PORT = process.env.PORT || 8000;
 app.listen(PORT);
 app.post("/user", (req, res) => {
