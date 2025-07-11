@@ -12,9 +12,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+const MONGO_URL =
+  "mongodb+srv://umairarif:DupgbVWx1CE5FfiU@umaircluster0.wjzfetl.mongodb.net/crud_app?retryWrites=true&w=majority&appName=UmairCluster0";
 
-connectToMongoDb(process.env.MONGO_URL);
-const PORT = process.env.PORT || 8000;
+connectToMongoDb(MONGO_URL);
+const PORT = 10000;
 app.listen(PORT);
 app.post("/user", (req, res) => {
   const { name, email, age } = req.body;
